@@ -24,13 +24,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let db;
 
 // ***Replace the URL below with the URL for your database***
-const url = 'mongodb://localhost:27017/owasp';
+//const url = 'mongodb://localhost:27017/owasp';
+const mgClienturl = 'mongodb://ThaparUser:Pass#123@ds237337.mlab.com:37337/owasp';
+const url = 'mongodb://ds237337.mlab.com:37337/owasp';
 // E.g. for option 2) above this will be:
 // const url =  'mongodb://localhost:21017/databaseName';
 
+var options = {
+  user: "ThaparUser",
+  pass: "Pass#123"
+  };
 
 // Create mongo connection
-const conn = mongoose.createConnection(url);
+const conn = mongoose.createConnection(url, options);
 
 // Init gfs
 let gfs;
@@ -76,7 +82,7 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
-MongoClient.connect(url, (err, database) => {
+MongoClient.connect(mgClienturl, (err, database) => {
   if (err) {
     return console.log(err);
   }
@@ -133,6 +139,9 @@ MongoClient.connect(url, (err, database) => {
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/login.html');
+});
 
 app.get('/gallery', (req, res) => {
   res.sendFile(__dirname + '/imagecontrol.html');
@@ -148,11 +157,6 @@ app.get('/aboutus', (req, res) => {
 
 app.get('/blog', (req, res) => {
   res.sendFile(__dirname + '/blog.html');
-});
-
-
-app.get('/team_members', (req, res) => {
-  res.sendFile(__dirname + '/speakers.html');
 });
 
 
@@ -179,6 +183,27 @@ app.post('/register', (req, res) => {
     }])
   });
 });
+  // get the click data from the database
+  app.post('/login', (req, res) => {
+    console.log(req.body);
+    var admin = req.body;
+  
+    db.collection('admin').find(
+        {
+          userName: admin.userName,
+          userPassword: admin.userPassword,
+        }).toArray((err, result) => {
+      if (err)
+      { 
+        res.send(err);
+      }
+      else
+      {
+        res.send(result);
+      }
+    });
+  });
+  
 
 //@routes GET /files 
 //@desc Display all files in Json
