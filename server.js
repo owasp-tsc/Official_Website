@@ -11,7 +11,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
-var server = require('http').createServer(app);
+var server = require('https').createServer(app);
 const client = require('socket.io')(server); //.listen(4001).sockets;
 
 server.listen(4001);
