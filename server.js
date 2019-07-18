@@ -14,6 +14,19 @@ const methodOverride = require('method-override');
 var server = require('https').createServer(app);
 const client = require('socket.io')(server); //.listen(4001).sockets;
 
+client.on('connection', function(clientConn) {
+  console.log('Client connected...');
+
+  clientConn.on('join', function(data) {
+      console.log(data);
+  });
+
+  clientConn.on('messages', function(data) {
+    console.log(data);
+  });
+
+});
+
 server.listen(4001);
 
 // serve files from the public directory
