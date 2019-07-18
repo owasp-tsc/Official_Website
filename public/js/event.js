@@ -20,12 +20,11 @@
         }
 
     }
-    //connect to socket.io
-    var socket = io.connect('https://owasptu.herokuapp.com:4001');
+    var io = require('socket.io-client');
 
-    socket.on('connect', function(data) {
-        socket.emit('join', 'Hello World from client');
-     });
+    //connect to socket.io
+    //var socket = io.connect('https://owasptu.herokuapp.com:4001');
+    var socket = io.connect('https://owasptu.herokuapp.com:4001', {reconnect: true});
 
     //Check for Connection
     if (socket != undefined) {
@@ -35,7 +34,7 @@
     socket.on('messages', function(data) {
         console.log(data);
     });
-    
+
     // Handle Output
     socket.on('output', function (data) {
         console.log(data);

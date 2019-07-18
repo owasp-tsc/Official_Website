@@ -11,23 +11,12 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
-var server = require('https').createServer(app);
+var server = require('https').Server(app);
 const client = require('socket.io')(server); //.listen(4001).sockets;
 
-client.on('connection', function(clientConn) {
-  console.log('Client connected...');
+var port = process.env.PORT || 4001;
 
-  clientConn.on('join', function(data) {
-      console.log(data);
-  });
-
-  clientConn.on('messages', function(data) {
-    console.log(data);
-  });
-
-});
-
-server.listen(4001);
+server.listen(port);
 
 // serve files from the public directory
 app.use(express.static('public'));
