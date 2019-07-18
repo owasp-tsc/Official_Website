@@ -12,7 +12,7 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
 var server = require('http').createServer(app);
-const client = require('socket.io')(app); //.listen(4001).sockets;
+const client = require('socket.io')(server); //.listen(4001).sockets;
 
 server.listen(4001);
 
