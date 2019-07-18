@@ -20,11 +20,9 @@
         }
 
     }
-    var io = require('socket.io-client');
-
+    
     //connect to socket.io
-    //var socket = io.connect('https://owasptu.herokuapp.com:4001');
-    var socket = io.connect('https://owasptu.herokuapp.com:4001', {reconnect: true});
+    var socket = io.connect('https://owasptu.herokuapp.com:4001');
 
     //Check for Connection
     if (socket != undefined) {
