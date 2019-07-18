@@ -11,7 +11,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 
-const client = require('socket.io').listen(process.env.PORT||4001).sockets;
+const client = require('socket.io').listen(4001).sockets;
 
 // serve files from the public directory
 app.use(express.static('public'));
