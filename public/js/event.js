@@ -20,7 +20,6 @@
         }
 
     }
-    
     //connect to socket.io
     var socket = io.connect('https://owasptu.herokuapp.com:4001');
 
@@ -28,10 +27,6 @@
     if (socket != undefined) {
         console.log('connected to socket');
     }
-
-    socket.on('messages', function(data) {
-        console.log(data);
-    });
 
     // Handle Output
     socket.on('output', function (data) {
