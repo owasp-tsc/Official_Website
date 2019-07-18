@@ -1,0 +1,191 @@
+.pop
+{
+	
+	background-color:#ECECEC;
+	margin: 100px 100px;
+	border-width: : 70px;
+	padding: 110px 110px;
+	color: black;
+	
+	border-radius: 40px;;
+	border-color:#D5D5D5;
+
+	display: none;
+	position: fixed;
+	left:10%;
+	top:10%;
+	right:10%;
+	bottom:10%;
+	justify-content: center;
+}
+.pop2
+{
+	
+	background-color:#ECECEC;
+	margin: 100px 100px;
+	border-width: : 70px;
+	padding: 110px 110px;
+	color: black;
+	
+	border-radius: 40px;;
+	border-color:#D5D5D5;
+
+	display: none;
+	position: fixed;
+	left:10%;
+	top:10%;
+	right:10%;
+	bottom:10%;
+}
+.pop3
+{
+	
+	background-color:#ECECEC;
+	margin: 100px 100px;
+	border-width: : 70px;
+	padding: 110px 110px;
+	color: black;
+	
+	border-radius: 40px;;
+	border-color:#D5D5D5;
+
+	display: none;
+	position: fixed;
+	left:10%;
+	top:10%;
+	right:10%;
+	bottom:10%;
+}
+.pop4
+{
+	
+	background-color:#ECECEC;
+	margin: 100px 100px;
+	border-width: : 70px;
+	padding: 110px 110px;
+	color: black;
+	
+	border-radius: 40px;;
+	border-color:#D5D5D5;
+
+	display: none;
+	position: fixed;
+	left:10%;
+	top:10%;
+	right:10%;
+	bottom:10%;
+}
+.pop5
+{
+	
+	background-color:#ECECEC;
+	margin: 100px 100px;
+	border-width: : 70px;
+	padding: 110px 110px;
+	color: black;
+	
+	border-radius: 40px;;
+	border-color:#D5D5D5;
+
+	display: none;
+	position: fixed;
+	left:10%;
+	top:10%;
+	right:10%;
+	bottom:10%;
+}
+.pop6
+{
+	
+	background-color:#ECECEC;
+	margin: 100px 100px;
+	border-width: : 70px;
+	padding: 110px 110px;
+	color: black;
+	
+	border-radius: 40px;;
+	border-color:#D5D5D5;
+
+	display: none;
+	position: fixed;
+	left:10%;
+	top:10%;
+	right:10%;
+	bottom:10%;
+	
+}
+
+  @media only screen and (max-width: 1080px)
+  {
+  	.pop
+{
+	width:300px;
+height:400px;
+padding :15px;
+top: 200px;
+	display: none;
+	position: fixed;
+	margin:0px 0px;
+
+}
+.pop2
+{
+	
+width:300px;
+height:400px;
+padding :15px;
+top: 200px;
+	display: none;
+	position: fixed;
+	margin:0px 0px;
+
+}
+.pop3
+{
+width:300px;
+height:400px;
+padding :15px;
+top: 200px;
+	display: none;
+	position: fixed;
+	margin:0px 0px;
+
+}
+.pop4
+{
+	
+width:300px;
+height:300px;
+padding :15px;
+top: 200px;
+	display: none;
+	position: fixed;
+	margin:0px 0px;
+
+}
+.pop5
+{
+	
+width:300px;
+height:400px;
+padding :15px;
+top: 200px;
+	display: none;
+	position: fixed;
+	margin:0px 0px;
+
+}
+.pop6
+{
+	
+width:300px;
+height:400px;
+padding :15px;
+top: 200px;
+	display: none;
+	position: fixed;
+	margin:0px 0px;
+
+}
+
+  }

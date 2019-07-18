@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20190717T103000Z
+DTEND:20190717T110000Z
+DTSTAMP:20190715T110142Z
+ORGANIZER;CN=girlscriptpatiala@gmail.com:mailto:girlscriptpatiala@gmail.com
+UID:v21ij0dv351g5lmmtgebfmdlk0@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=manmeetkaur18102000@gmail.com;X-NUM-GUESTS=0:mailto:manmeetkaur18102000
+ @gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=girlscriptpatiala@gmail.com;X-NUM-GUESTS=0:mailto:girlscriptpatiala@gma
+ il.com
+X-MICROSOFT-CDO-OWNERAPPTID:-1648463496
+CREATED:20190715T110137Z
+DESCRIPTION:Event Name: Interview Schedule\n\nSelect any one of your free s
+ lots and we'll catch you up on the same day. \n\nMobile Number: 8527578560\
+ n\nNeed to make changes to this event?\nCancel: https://calendly.com/cancel
+ lations/EBIBES5XF3GGR6VE\nReschedule: https://calendly.com/reschedulings/EB
+ IBES5XF3GGR6VE\n\nPowered by Calendly.com\n\n\n-::~:~::~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nPlease do not 
+ edit this section of the description.\n\nView your event at https://www.goo
+ gle.com/calendar/event?action=VIEW&eid=djIxaWowZHYzNTFnNWxtbXRnZWJmbWRsazAg
+ bWFubWVldGthdXIxODEwMjAwMEBt&tok=MjcjZ2lybHNjcmlwdHBhdGlhbGFAZ21haWwuY29tMz
+ c5ODI3OTAwMzM0NWRlNTY5YWQwOGEwNzQwOTZjNTY2M2M5OTVhNA&ctz=Asia%2FKolkata&hl=
+ en&es=1.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20190715T110139Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Manmeet kaur and GirlScript Patiala
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
