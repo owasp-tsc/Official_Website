@@ -29,12 +29,11 @@ const methodOverride = require('method-override');
 // const client = socketIO(server);
 var socket = require('socket.io')
 
-var server = app.listen('https://owasptu.herokuapp.com:${process.env.PORT}', function(){
+var server = app.listen(4000, function(){
     console.log('listening for requests on port 4000,');
 });
 
-let client = socket(server)
-
+let client = socket(server);
 
 // serve files from the public directory
 app.use(express.static('public'));
