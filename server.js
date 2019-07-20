@@ -37,10 +37,14 @@ const methodOverride = require('method-override');
 
 var port = process.env.PORT || 4000;
 
-var app = express.createServer();
-var client = require('socket.io').listen(app);
+// var app = express.createServer();
+// var client = require('socket.io').listen(app);
 
-app.listen(port);
+// app.listen(port);
+
+const server = require('http').Server(app);
+
+const io = require('socket.io')(server);
 
 // Heroku setting for long polling
 client.configure(function () {
