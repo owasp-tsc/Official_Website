@@ -37,7 +37,7 @@ const methodOverride = require('method-override');
 
 var port = process.env.PORT || 3000;
 
-var app = require('express').createServer()
+var app = express.createServer()
 var client = require('socket.io').listen(app);
 
 app.listen(port);
