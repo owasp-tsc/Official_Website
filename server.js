@@ -2,7 +2,7 @@ console.log('Server-side code running');
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-const app = express();
+// const app = express();
 const path = require('path');
 var nodemailer = require('nodemailer');
 const crypto = require('crypto');
