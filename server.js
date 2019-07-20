@@ -1,5 +1,5 @@
 console.log('Server-side code running');
-const express = require('express');
+const app = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 // const app = express();
@@ -37,8 +37,8 @@ const methodOverride = require('method-override');
 
 var port = process.env.PORT || 4000;
 
-var app = require('http').createServer(express);
-var client = require('socket.io').listen(app);
+var http = require('http').createServer(app);
+var client = require('socket.io').listen(http);
 
 app.listen(port);
 
