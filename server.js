@@ -10,12 +10,16 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-var app1=require('express')();
-var http = require('http').Server(app1)
+// var app1=require('express')();
+// var http = require('http').Server(app1)
 
-// var server = require('https').createServer(app);
-const client = require('socket.io')(http); //.listen(4001).sockets;
+// // var server = require('https').createServer(app);
+// const client = require('socket.io')(http); //.listen(4001).sockets;
+// http = require('http');
+// var server = http.createServer(app);
+// var client = require('socket.io').listen(server);
 
+// server.listen(process.env.PORT);
 // server.listen(4001);
 // const socketIO = require('socket.io');
 // const server = express()
@@ -23,6 +27,14 @@ const client = require('socket.io')(http); //.listen(4001).sockets;
 //   .listen(process.env.port ||4000, () => console.log(`Listening on ${ process.env.port }`));
 
 // const client = socketIO(server);
+var socket = require('socket.io')
+
+var server = app.listen(4000, function(){
+    console.log('listening for requests on port 4000,');
+});
+
+let client = socket(server)
+
 
 // serve files from the public directory
 app.use(express.static('public'));

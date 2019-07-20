@@ -16,12 +16,12 @@
         if (s != statusDefault) {
             var delay = setTimeout(function () {
                 setStatus(statusDefault);
-            }, 4001);
+            }, 4000);
         }
 
     }
     //connect to socket.io
-    var socket = io.connect('https://owasptu.herokuapp.com/');
+    var socket = io.connect('https://owasptu.herokuapp.com:4000');
 
     //Check for Connection
     if (socket != undefined) {
