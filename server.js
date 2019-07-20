@@ -1,54 +1,20 @@
 console.log('Server-side code running');
-const app = require('express');
+const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-// const app = express();
-const path = require('path');
+const app = express();
 var nodemailer = require('nodemailer');
+const path = require('path');
 const crypto = require('crypto');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
-// var app1=require('express')();
-// var http = require('http').Server(app1)
 
-// // var server = require('https').createServer(app);
-// const client = require('socket.io')(http); //.listen(4001).sockets;
-// http = require('http');
-// var server = http.createServer(app);
-// var client = require('socket.io').listen(server);
+const client = require('socket.io').listen(4000).sockets;
 
-// server.listen(process.env.PORT);
-// server.listen(4001);
-// const socketIO = require('socket.io');
-// const server = express()
-//   .use((req, res) => res.sendFile(index) )
-//   .listen(process.env.port ||4000, () => console.log(`Listening on ${ process.env.port }`));
-
-// // const client = socketIO(server);
-// var socket = require('socket.io')
-
-// var server = app.listen(4000, function(){
-//     console.log('listening for requests on port 4000,');
-// });
-
-// let client = socket(server);
-
-var port = process.env.PORT || 4000;
-
-var http = require('http').createServer(app);
-var client = require('socket.io').listen(http);
-
-http.listen(port);
-
-// Heroku setting for long polling
-// client.configure(function () {
-//     client.set("transports", ["xhr-polling"]);
-//     client.set("polling duration", 10);
-// });
 // serve files from the public directory
-app.use(app.static('public'));
+app.use(express.static('public'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -57,10 +23,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // connect to the db and start the express server
 let db;
-
+/** rakesh changes */
 // ***Replace the URL below with the URL for your database***
 //const url = 'mongodb://localhost:27017/owasp';
 const mgClienturl = 'mongodb://ThaparUser:Pass#123@ds237337.mlab.com:37337/owasp';
+//const url = 'mongodb://ds237337.mlab.com:37337/owasp';
+// E.g. for option 2) above this will be:
+// const url =  'mongodb://localhost:21017/databaseName';
+/** rakesh changes */
 var options = {
   user: "ThaparUser",
   pass: "Pass#123",
@@ -73,10 +43,11 @@ useNewUrlParser: true ,
 // Create mongo connection
 const conn = mongoose.createConnection(mgClienturl, options);
 
+// const conn = mongoose.connect(url, { auth:{
 
-//     authdb: "admin",
+//     owasp: "admin",
 //     user: "ThaparUser",
-//   pass: "Pass#123",
+//      pass: "Pass#123",
 
 // }}).then(function(db){
 
@@ -85,6 +56,9 @@ const conn = mongoose.createConnection(mgClienturl, options);
 //     mongoose.connection.close() // close db
 
 // })
+
+
+
 // Init gfs
 let gfs;
 
@@ -112,7 +86,7 @@ conn.once('open', () => {
 //     });
 //   }
 // });
-
+/** rakesh change,change */
 const storage = new GridFsStorage({
   url: mgClienturl,
   file: (req, file) => {
@@ -129,14 +103,6 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
-
-app.set('view engine', 'ejs');
-
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.redirect('/galleryshow');
-});
-
-
 MongoClient.connect(mgClienturl, (err, database) => {
   if (err) {
     return console.log(err);
@@ -148,9 +114,10 @@ MongoClient.connect(mgClienturl, (err, database) => {
 //  gfs.collection('uploads');
  
   // start the express web server listening on 8080
-  app.listen((port || 8080), () => {
-    console.log('listening on deployed server');
-});
+  app.listen(8080, () => {
+    console.log('listening on 8080');
+  });
+
   client.on('connection', function (socket) {
     console.log('Client Socket connected');
 
@@ -213,7 +180,6 @@ app.get('/blog', (req, res) => {
   res.sendFile(__dirname + '/blog.html');
 });
 
-
 app.get('/options', (req, res) => {
   res.sendFile(__dirname + '/schedule.html');
 });
@@ -223,29 +189,20 @@ app.get('/eventupdate', (req, res) => {
 });
 
 
+
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.redirect('/galleryshow');
+});
+
+app.set('view engine', 'ejs');
+
 // add a document to the DB collection recording the click event
 app.post('/register', (req, res) => {
   console.log(req.body);
   var eventregistration = req.body;
 
   db.collection('eventregistration').save(eventregistration, (err, result) => {
-    if (err) {
-      return console.log(err);
-    }
-    console.log('click added to db');
-    //res.sendStatus(201);
-    res.send([{
-      message: 'User successfully registered',
-      status: true
-    }])
-  });
-});
-// add a document to the DB collection recording the click event
-app.post('/updateevents', (req, res) => {
-  console.log(req.body);
-  var eventupdatedetailes = req.body;
-
-  db.collection('eventdetails').save(eventupdatedetailes, (err, result) => {
     if (err) {
       return console.log(err);
     }
@@ -278,7 +235,44 @@ app.post('/updateevents', (req, res) => {
     });
   });
   
-
+  app.post('/updateevents', (req, res) => {
+    console.log(req.body);
+    var eventupdatedetailes = req.body;
+  
+    db.collection('eventdetails').save(eventupdatedetailes, (err, result) => {
+      if (err) {
+        return console.log(err);
+      }
+      console.log('click added to db');
+      //res.sendStatus(201);
+      res.send([{
+        message: 'User successfully registered',
+        status: true
+      }])
+    });
+  });
+    // get the click data from the database
+    app.post('/login', (req, res) => {
+      console.log(req.body);
+      var admin = req.body;
+    
+      db.collection('admin').find(
+          {
+            userName: admin.userName,
+            userPassword: admin.userPassword,
+          }).toArray((err, result) => {
+        if (err)
+        { 
+          res.send(err);
+        }
+        else
+        {
+          res.send(result);
+        }
+      });
+    });
+    
+  
 //@routes GET /files 
 //@desc Display all files in Json
 app.get('/galleryshow', (req, res) => {
@@ -360,8 +354,8 @@ let transporter = nodemailer.createTransport({
       rejectUnauthorized: true
   }
 });
-// const port = 8080;
-// app.listen(port, () => console.log(`Server started on port ${port}`));
+// // const port = 8080;
+// // app.listen(port, () => console.log(`Server started on port ${port}`));
 app.post('/sendmessage', (req, res) => {
   console.log(req.body);
   var message = req.body;
@@ -394,3 +388,5 @@ app.post('/sendmessage', (req, res) => {
     }])
   });
 });
+// const port = 8080;
+// app.listen(port, () => console.log(`Server started on port ${port}`));

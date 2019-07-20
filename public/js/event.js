@@ -21,8 +21,7 @@
 
     }
     //connect to socket.io
-    // var socket = io.connect('https://owasptu.herokuapp.com:4000');
-    var socket = io.connect((window.location.hostname + ':' + window.location.port));
+    var socket = io.connect('http://localhost:4000');
 
     //Check for Connection
     if (socket != undefined) {
