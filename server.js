@@ -26,15 +26,27 @@ const methodOverride = require('method-override');
 //   .use((req, res) => res.sendFile(index) )
 //   .listen(process.env.port ||4000, () => console.log(`Listening on ${ process.env.port }`));
 
-// const client = socketIO(server);
-var socket = require('socket.io')
+// // const client = socketIO(server);
+// var socket = require('socket.io')
 
-var server = app.listen(4000, function(){
-    console.log('listening for requests on port 4000,');
+// var server = app.listen(4000, function(){
+//     console.log('listening for requests on port 4000,');
+// });
+
+// let client = socket(server);
+
+var port = process.env.PORT || 3000;
+
+var app = require('express').createServer()
+var client = require('socket.io').listen(app);
+
+app.listen(port);
+
+// Heroku setting for long polling
+client.configure(function () {
+    client.set("transports", ["xhr-polling"]);
+    client.set("polling duration", 10);
 });
-
-let client = socket(server);
-
 // serve files from the public directory
 app.use(express.static('public'));
 
@@ -136,7 +148,7 @@ MongoClient.connect(mgClienturl, (err, database) => {
 //  gfs.collection('uploads');
  
   // start the express web server listening on 8080
-  app.listen((process.env.PORT || 8080), () => {
+  app.listen((port || 8080), () => {
     console.log('listening on deployed server');
 });
   client.on('connection', function (socket) {
