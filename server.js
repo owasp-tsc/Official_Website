@@ -48,7 +48,7 @@ http.listen(port);
 //     client.set("polling duration", 10);
 // });
 // serve files from the public directory
-app.use(express.static('public'));
+app.use(app.static('public'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
