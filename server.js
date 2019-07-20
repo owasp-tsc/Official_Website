@@ -44,7 +44,7 @@ var port = process.env.PORT || 4000;
 
 const server = require('http').Server(express);
 
-const io = require('socket.io')(server);
+const client = require('socket.io')(server).socket;
 
 // Heroku setting for long polling
 client.configure(function () {
