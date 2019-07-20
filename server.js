@@ -40,7 +40,7 @@ var port = process.env.PORT || 4000;
 var http = require('http').createServer(app);
 var client = require('socket.io').listen(http);
 
-app.listen(port);
+http.listen(port);
 
 // Heroku setting for long polling
 // client.configure(function () {
