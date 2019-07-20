@@ -43,10 +43,10 @@ var client = require('socket.io').listen(app);
 app.listen(port);
 
 // Heroku setting for long polling
-client.configure(function () {
-    client.set("transports", ["xhr-polling"]);
-    client.set("polling duration", 10);
-});
+// client.configure(function () {
+//     client.set("transports", ["xhr-polling"]);
+//     client.set("polling duration", 10);
+// });
 // serve files from the public directory
 app.use(express.static('public'));
 
