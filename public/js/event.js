@@ -21,7 +21,7 @@
 
     }
     //connect to socket.io
-    var socket = io.connect('https://owasptu.herokuapp.com:4001');
+    var socket = io.connect('https://owasptu.herokuapp.com/');
 
     //Check for Connection
     if (socket != undefined) {

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "serve": "gulp",
-    "start":"node server.js"
+    "start": "node server.js"
   },
   "author": "colorlib",
   "license": "CC-BY-3.0",
@@ -23,6 +23,7 @@
     "font-awesome": "^4.7.0",
     "gridfs": "^1.0.0",
     "gridfs-stream": "^1.1.1",
+    "http": "0.0.0",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.6",
     "jarallax": "^1.10.6",
