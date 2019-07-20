@@ -29,7 +29,7 @@ const methodOverride = require('method-override');
 // const client = socketIO(server);
 var socket = require('socket.io')
 
-var server = app.listen(4000, function(){
+var server = app.listen('https://owasptu.herokuapp.com:4000', function(){
     console.log('listening for requests on port 4000,');
 });
 
